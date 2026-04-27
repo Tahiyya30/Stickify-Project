@@ -69,6 +69,22 @@ export default function Help() {
         </div>
 
         <div>
+          <h2 className="h2-help">Tips for organizing events</h2>
+          <ul>
+            <li>
+              Prioritise important events using high, medium, and low priority
+            </li>
+            <li> Always enter a clear date and time for each event</li>
+            <li> Use short and clear event titles for easy reading</li>
+            <li> Separate personal and business events to stay organised</li>
+            <li> Regularly update events when plans change</li>
+            <li> Delete or remove completed or cancelled events</li>
+            <li> Avoid overloading a single day with too many events</li>
+            <li> Keep your dashboard clean by reviewing events often</li>
+          </ul>
+        </div>
+
+        <div>
           <h2 className="h2-help">How to register a Stickify account</h2>
           <ul>
             <li>Open Stickify in your browser and go to the Register page</li>

@@ -1,4 +1,6 @@
 .update-event-title {
+  display: flex;
+  flex-wrap: wrap;
   font-family: "Montserrat", sans-serif;
   font-weight: 600;
   width: 600px;
@@ -25,8 +27,6 @@ body {
 }
 
 .update-event-card {
-  display: flex;
-  flex-wrap: wrap;
   width: 500px;
   position: relative;
   margin: 0px;
