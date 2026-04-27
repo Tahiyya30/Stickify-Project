@@ -1,0 +1,79 @@
+.navbar-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  font-size: 30px;
+  gap: 70px;
+  height: 100px;
+  width: 100vw;
+  margin: 0px;
+  background-color: rgb(225, 175, 225);
+  position: fixed;
+  z-index: 1000;
+  top: 0;
+  left: 0;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+}
+
+.navbar-container a {
+  text-decoration: none;
+  color: black;
+}
+
+body {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 800;
+}
+
+.logout-button {
+  position: absolute;
+  top: 10px;
+  right: 20px;
+}
+
+@media (max-width: 915px) {
+  .navbar-container {
+    flex-direction: row;
+    justify-content: left;
+    padding: 10px 30px;
+    font-size: 30px;
+    gap: 30px;
+  }
+
+  .logout-button {
+    position: fixed;
+    top: 10px;
+    right: 20px;
+    width: 80px;
+    height: 30px;
+  }
+}
+
+@media (max-width: 768px) {
+  .navbar-container {
+    flex-direction: row;
+    justify-content: left;
+    padding: 10px 30px;
+    font-size: 20px;
+    gap: 30px;
+  }
+}
+
+@media (max-width: 600px) {
+  .navbar-container {
+    flex-direction: row;
+    justify-content: left;
+    padding: 10px 30px;
+    font-size: 15px;
+    gap: 30px;
+  }
+
+  .logout-button {
+    position: fixed;
+    top: 10px;
+    right: 20px;
+    width: 80px;
+    height: 30px;
+  }
+}

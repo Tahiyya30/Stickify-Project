@@ -1,0 +1,99 @@
+.register-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: rgb(225, 175, 225);
+  height: auto;
+  max-width: 100vw;
+  padding: 60px;
+}
+
+.register-heading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.register-heading h1 {
+  color: black;
+  font-size: 60px;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 600;
+  margin: 5px;
+}
+
+.register-heading h3 {
+  color: black;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 600;
+}
+
+.register-form-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.name-register-container {
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.email-register-container {
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.username-register-container {
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.password-register-container {
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.confirm-password-register-container {
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.register-input {
+  margin-top: 7px;
+  border: 2px white;
+  height: 30px;
+  border-radius: 3px;
+  padding-left: 10px;
+  outline-color: rgb(233, 233, 233);
+  box-shadow: none;
+}
+
+.register-button-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.register-button {
+  background-color: rgb(170, 2, 139);
+}

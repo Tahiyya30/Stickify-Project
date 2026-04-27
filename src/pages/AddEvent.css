@@ -1,0 +1,123 @@
+.add-event-title {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 600;
+  font-size: 40px;
+  margin: 50px;
+  text-align: center;
+}
+
+body {
+  margin: 0;
+}
+.add-event-card-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding-top: 100px;
+  height: 140vh;
+  background-color: rgb(244, 224, 236);
+  margin: 0px;
+}
+
+.add-event-card {
+  width: 500px;
+  margin: 0px;
+  align-items: center;
+  justify-content: center;
+  border-radius: 15px;
+  background-color: rgb(225, 175, 225);
+  padding: 60px;
+  padding-top: 40px;
+}
+
+.addevent-input {
+  margin-top: 7px;
+  border: 2px white;
+  height: 30px;
+  border-radius: 5px;
+  padding-left: 10px;
+  outline-color: rgb(233, 233, 233);
+  box-shadow: none;
+}
+
+label {
+  font-size: 14px;
+}
+
+.add-event-event-container {
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.addevent-event-type-container {
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.add-event-description-container {
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.add-event-location-container {
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.addevent-priority-container {
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.addevent-date-container {
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+.addevent-time-container {
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.addevent-button-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+button {
+  border: 2px black;
+  border-radius: 6px;
+  color: white;
+  font-size: 15px;
+  background-color: rgb(170, 2, 139);
+  width: 100px;
+  height: 40px;
+  margin: 20px;
+}
+
+.formik-errors {
+  color: red;
+  font-size: 10px;
+}
