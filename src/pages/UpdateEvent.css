@@ -1,7 +1,8 @@
 .update-event-title {
   font-family: "Montserrat", sans-serif;
   font-weight: 600;
-  font-size: 40px;
+  width: 600px;
+  font-size: 39px;
   margin: 50px;
   text-align: center;
 }
@@ -11,17 +12,21 @@ body {
 }
 .update-event-card-container {
   display: flex;
+
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding-top: 100px;
-  height: 140vh;
   background-color: rgb(244, 224, 236);
   max-width: 100vw;
   margin: 0px;
+  padding-top: 130px;
+  min-height: 140vh;
+  padding-bottom: 30px;
 }
 
 .update-event-card {
+  display: flex;
+  flex-wrap: wrap;
   width: 500px;
   position: relative;
   margin: 0px;
