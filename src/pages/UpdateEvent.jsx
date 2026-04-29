@@ -12,7 +12,8 @@ export default function UpdateEvent() {
   const { id } = useParams();
   const navigate = useNavigate();
 
-  const { events, setEvents } = useContext(GlobalContext);
+  const { events, setEvents, currentUser, setCurrentUser } =
+    useContext(GlobalContext);
 
   // find and store item from events array if the event's id equals to the id clicked on by user
   const eventToEdit = events?.find((event) => event.id === id);
@@ -22,7 +23,7 @@ export default function UpdateEvent() {
       event: eventToEdit?.event || "",
       eventType: eventToEdit?.eventType || "",
       description: eventToEdit?.description || "",
-      location: eventToEdit?.priority || "",
+      location: eventToEdit?.location || "",
       priority: eventToEdit?.priority || "",
       date: eventToEdit?.date || "",
       time: eventToEdit?.time || "",
@@ -37,6 +38,7 @@ export default function UpdateEvent() {
       handleUpdate({
         ...values,
         id: id,
+        userId: currentUser.username,
       });
 
       navigate("/");
@@ -86,7 +88,7 @@ export default function UpdateEvent() {
                 className="update-event-input"
                 name="eventType"
                 value={formik.values.eventType}
-                placeholder="Business/Personal"
+                placeholder="business/personal"
                 onChange={formik.handleChange}
                 onBlur={formik.handleBlur}
               ></input>
@@ -134,7 +136,7 @@ export default function UpdateEvent() {
                 className="update-event-input"
                 name="priority"
                 value={formik.values.priority}
-                placeholder="High/Medium/Low"
+                placeholder="high/medium/low"
                 onChange={formik.handleChange}
                 onBlur={formik.handleBlur}
               ></input>

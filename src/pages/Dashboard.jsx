@@ -6,7 +6,8 @@ import NavBar from "../routes/NavBar.jsx";
 import { useNavigate } from "react-router-dom";
 
 export default function Dashboard() {
-  const { events, setEvents } = useContext(GlobalContext);
+  const { events, setEvents, currentUser, setCurrentUser } =
+    useContext(GlobalContext);
   const navigate = useNavigate();
 
   function RemoveEvent(id) {
@@ -17,8 +18,12 @@ export default function Dashboard() {
     localStorage.setItem("events", JSON.stringify(updatedEvents));
   }
 
+  const userEvents = events.filter(
+    (event) => event.userId === currentUser.username,
+  );
+
   // sort events by date and time
-  const sortedEvents = [...events].sort(
+  const sortedEvents = [...userEvents].sort(
     (a, b) => new Date(`${a.date} ${a.time}`) - new Date(`${b.date} ${b.time}`),
   );
 
@@ -28,7 +33,7 @@ export default function Dashboard() {
 
       <div className="dashboard-container">
         <div className="dashboard-heading">
-          <h1>Stickify</h1>
+          <h1>Stickify Dashboard</h1>
           <h2>Upcoming Events</h2>
         </div>
         <div className="dashboard-card-container">
@@ -57,7 +62,7 @@ export default function Dashboard() {
                     </Card.Text>
 
                     <Card.Text className="description">
-                      {event.location && (
+                      {event.description && (
                         <p>Description: {event.description}</p>
                       )}
                     </Card.Text>
@@ -67,9 +72,11 @@ export default function Dashboard() {
                     </Card.Text>
 
                     <Card.Text>Date: {event.date}</Card.Text>
+
                     <Card.Text className="location">
                       {event.location && <p>Location: {event.location}</p>}
                     </Card.Text>
+
                     <Card.Text>Time: {event.time}</Card.Text>
                   </Card.Body>
                   <button

@@ -28,6 +28,16 @@ export default function Register() {
     onSubmit: (values) => {
       const users = JSON.parse(localStorage.getItem("users")) || [];
 
+      const existingUser = users.find(
+        (user) =>
+          user.email === values.email || user.username === values.username,
+      );
+
+      if (existingUser) {
+        alert("Account already exists. Please login.");
+        return;
+      }
+
       //take the values object that is returned and store it as a string object in local storage on submit
       users.push(values);
 

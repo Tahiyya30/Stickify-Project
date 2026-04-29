@@ -127,6 +127,7 @@ button {
 .formik-errors {
   color: red;
   font-size: 10px;
+  font-weight: 600;
 }
 
 .add-event-exit-button {

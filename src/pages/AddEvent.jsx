@@ -9,7 +9,8 @@ import NavBar from "../routes/NavBar.jsx";
 import { useNavigate } from "react-router-dom";
 
 export default function AddEvent() {
-  const { events, setEvents } = useContext(GlobalContext);
+  const { events, setEvents, currentUser, setCurrentUser } =
+    useContext(GlobalContext);
   const navigate = useNavigate();
   const formik = useFormik({
     initialValues: {
@@ -28,6 +29,7 @@ export default function AddEvent() {
       const newEvent = {
         id: crypto.randomUUID(),
         ...values,
+        userId: currentUser.username,
       };
 
       setEvents((prev) => {
@@ -74,7 +76,7 @@ export default function AddEvent() {
                 className="addevent-input"
                 name="eventType"
                 value={formik.values.eventType}
-                placeholder="Business/Personal"
+                placeholder="business/personal"
                 onChange={formik.handleChange}
                 onBlur={formik.handleBlur}
               ></input>
@@ -122,7 +124,7 @@ export default function AddEvent() {
                 className="addevent-input"
                 name="priority"
                 value={formik.values.priority}
-                placeholder="High/Medium/Low"
+                placeholder="high/medium/low"
                 onChange={formik.handleChange}
                 onBlur={formik.handleBlur}
               ></input>

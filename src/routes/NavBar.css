@@ -16,6 +16,9 @@
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
 }
 
+.navbar-container a:hover {
+  color: rgb(255, 255, 255);
+}
 .navbar-container a {
   text-decoration: none;
   color: black;

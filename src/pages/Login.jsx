@@ -7,7 +7,8 @@ import { Link } from "react-router-dom";
 import "./Login.css";
 
 export default function Login() {
-  const { login, setLogin } = useContext(GlobalContext);
+  const { login, setLogin, currentUser, setCurrentUser } =
+    useContext(GlobalContext);
   const navigate = useNavigate();
 
   const formik = useFormik({
@@ -25,7 +26,11 @@ export default function Login() {
       );
 
       if (foundUser) {
+        setCurrentUser(foundUser);
         setLogin(true);
+      } else {
+        alert("Invalid username or password.");
+        return;
       }
     },
   });
