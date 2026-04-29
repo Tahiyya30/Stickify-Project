@@ -8,16 +8,19 @@ import NavBar from "../routes/NavBar.jsx";
 import Card from "react-bootstrap/Card";
 import { useNavigate } from "react-router-dom";
 
+// create function that updates an event and return UI page to update event
 export default function UpdateEvent() {
   const { id } = useParams();
   const navigate = useNavigate();
 
+  // access shared state variables and functions
   const { events, setEvents, currentUser, setCurrentUser } =
     useContext(GlobalContext);
 
-  // find and store item from events array if the event's id equals to the id clicked on by user
+  // find and store item from events array if the event's id equals to the id of the event clicked on by user
   const eventToEdit = events?.find((event) => event.id === id);
 
+  // ensure previous values of event are saved when update events form opens up, if no evtns, create empty string
   const formik = useFormik({
     initialValues: {
       event: eventToEdit?.event || "",
@@ -34,6 +37,7 @@ export default function UpdateEvent() {
     // refills input fields to current values when eventToEdit data eventually loads
     enableReinitialize: true,
 
+    // when update events form is submitted, run the below function
     onSubmit: (values) => {
       handleUpdate({
         ...values,
@@ -45,12 +49,14 @@ export default function UpdateEvent() {
     },
   });
 
+  // function to update 'events' state variable to new array with new values from the updated/edited event
   const handleUpdate = (updatedEvent) => {
     setEvents((prev) => {
       const updated = prev.map((e) =>
         e.id === updatedEvent.id ? updatedEvent : e,
       );
 
+      // update local storage to new events array
       localStorage.setItem("events", JSON.stringify(updated));
       return updated;
     });
@@ -64,9 +70,8 @@ export default function UpdateEvent() {
         <Card className="update-event-card">
           <Card.Title className="update-event-title">Update Event</Card.Title>
 
-          {/* enter event type */}
           <form onSubmit={formik.handleSubmit}>
-            {/* enter event type*/}
+            {/* enter event */}
             <div className="update-event-container">
               <label>Please enter the name of your event</label>
               <input
@@ -77,11 +82,12 @@ export default function UpdateEvent() {
                 onChange={formik.handleChange}
                 onBlur={formik.handleBlur}
               ></input>
+              {/* display formik errors */}
               {formik.touched.event && formik.errors.event && (
                 <p className="formik-errors">*{formik.errors.event}</p>
               )}
             </div>
-
+            {/* enter event type */}
             <div className="update-event-type-container">
               <label>Please enter the event type</label>
               <input
@@ -93,11 +99,12 @@ export default function UpdateEvent() {
                 onBlur={formik.handleBlur}
               ></input>
 
+              {/* display formik errors */}
               {formik.touched.eventType && formik.errors.eventType && (
                 <p className="formik-errors">*{formik.errors.eventType}</p>
               )}
             </div>
-
+            {/* enter event */}
             <div className="update-event-description-container">
               <label>Please enter event description</label>
               <input
@@ -109,11 +116,12 @@ export default function UpdateEvent() {
                 onBlur={formik.handleBlur}
               ></input>
 
+              {/* display formik errors */}
               {formik.touched.description && formik.errors.description && (
                 <p className="formik-errors">*{formik.errors.description}</p>
               )}
             </div>
-
+            {/* enter event location */}
             <div className="update-event-location-container">
               <label>Please enter the location</label>
               <input
@@ -125,11 +133,12 @@ export default function UpdateEvent() {
                 onBlur={formik.handleBlur}
               ></input>
 
+              {/* display formik errors */}
               {formik.touched.location && formik.errors.location && (
                 <p className="formik-errors">*{formik.errors.location}</p>
               )}
             </div>
-
+            {/* enter event's importance */}
             <div className="update-event-priority-container">
               <label>Please rate event's importance</label>
               <input
@@ -140,6 +149,8 @@ export default function UpdateEvent() {
                 onChange={formik.handleChange}
                 onBlur={formik.handleBlur}
               ></input>
+
+              {/* display formik errors */}
               {formik.touched.priority && formik.errors.priority && (
                 <p className="formik-errors">*{formik.errors.priority}</p>
               )}
@@ -173,15 +184,19 @@ export default function UpdateEvent() {
                 onChange={formik.handleChange}
                 onBlur={formik.handleBlur}
               ></input>
+
+              {/* display formik errors */}
               {formik.touched.time && formik.errors.time && (
                 <p className="formik-errors">*{formik.errors.time}</p>
               )}
             </div>
-
+            {/* submit button */}
             <div className="update-event-button-container">
               <button type="submit">Update Event</button>
             </div>
           </form>
+
+          {/* button to exit from updating events page and go back to dashboard */}
           <div className="add-event-exit-button-container">
             <button
               className="add-event-exit-button"

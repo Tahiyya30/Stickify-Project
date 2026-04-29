@@ -2,10 +2,12 @@ import NavBar from "../routes/NavBar.jsx";
 import "./Help.css";
 import { useNavigate } from "react-router-dom";
 
+// function to display help to users logged in
 export default function Help() {
   const navigate = useNavigate();
   return (
     <>
+      {/* show nav bar */}
       <NavBar />
       <div className="help-container">
         <div className="help-heading-container">
@@ -19,6 +21,7 @@ export default function Help() {
 
         {/* ====================================================================================== */}
 
+        {/* How to user app */}
         <div className="how-to-use-container">
           <h2 className="h2-help">How to use Stickify</h2>
           <h3 className="h3-help">Adding an Event</h3>
@@ -68,6 +71,7 @@ export default function Help() {
           </ul>
         </div>
 
+        {/* Tipsfor organizing  */}
         <div>
           <h2 className="h2-help">Tips for organizing events</h2>
           <ul>
@@ -84,6 +88,7 @@ export default function Help() {
           </ul>
         </div>
 
+        {/* How to register */}
         <div>
           <h2 className="h2-help">How to register a Stickify account</h2>
           <ul>

@@ -3,17 +3,20 @@ import { createContext, useState } from "react";
 export const GlobalContext = createContext();
 
 export function GlobalProvider({ children }) {
-  const [currentUser, setCurrentUser] = useState(null);
-  const [login, setLogin] = useState(false);
+  const [currentUser, setCurrentUser] = useState(() => {
+    const saved = localStorage.getItem("currentUser");
+    return saved ? JSON.parse(saved) : null;
+  });
+
+  const [events, setEvents] = useState(() => {
+    const saved = localStorage.getItem("events");
+    return saved ? JSON.parse(saved) : [];
+  });
+
   const [addEvent, setAddEvent] = useState(false);
-  const [events, setEvents] = useState(
-    JSON.parse(localStorage.getItem("events")) || [],
-  );
   return (
     <GlobalContext.Provider
       value={{
-        login,
-        setLogin,
         addEvent,
         setAddEvent,
         events,

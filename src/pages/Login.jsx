@@ -6,28 +6,36 @@ import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 import "./Login.css";
 
+// funtion login user to the website if login exists
 export default function Login() {
-  const { login, setLogin, currentUser, setCurrentUser } =
-    useContext(GlobalContext);
+  // access shared state variables and functions
+  const { currentUser, setCurrentUser } = useContext(GlobalContext);
+
   const navigate = useNavigate();
 
+  // store vlaues of user in form
   const formik = useFormik({
     initialValues: { username: "", password: "" },
 
     validationSchema: LoginValidation,
 
+    // when form is submitted, run the below function
     onSubmit: (values) => {
+      // store users from local storage in users variable
       const users = JSON.parse(localStorage.getItem("users")) || [];
 
+      // find current user if user exists in users variable
       const foundUser = users.find(
         (user) =>
           user.username === values.username &&
           user.password === values.password,
       );
 
+      // if user is found in users (ie. foundUser exists), set login to true to login and set current user to currentUser variable
       if (foundUser) {
+        localStorage.setItem("currentUser", JSON.stringify(foundUser));
         setCurrentUser(foundUser);
-        setLogin(true);
+        // else alert user with message and stay on login page by exiting from function
       } else {
         alert("Invalid username or password.");
         return;
@@ -38,12 +46,14 @@ export default function Login() {
   return (
     <>
       <div className="login-container">
+        {/* heading for login page */}
         <div className="login-heading">
           <h1>Hi there, it's Stickify!</h1>
           <h3>Trying to log in?</h3>
         </div>
         <div className="login-form-container">
           <form onSubmit={formik.handleSubmit}>
+            {/* login username container */}
             <div className="login-username-container">
               <label>Enter username</label>
               <input
@@ -59,7 +69,7 @@ export default function Login() {
                 <p className="formik-errors">*{formik.errors.username}</p>
               )}
             </div>
-
+            {/* login password container */}
             <div className="login-password-container">
               <label>Enter password</label>
               <input
@@ -76,6 +86,7 @@ export default function Login() {
               )}
             </div>
 
+            {/* button to send login form and login user */}
             <div className="login-button-container">
               <button type="submit" className="login-button">
                 Login

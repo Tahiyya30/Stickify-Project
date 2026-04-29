@@ -14,16 +14,25 @@ import UpdateEvent from "./pages/UpdateEvent.jsx";
 import { Navigate } from "react-router-dom";
 
 function App() {
-  const { login, setLogin } = useContext(GlobalContext);
+  // access shared state variables
+  const { currentUser, setCurrentUser } = useContext(GlobalContext);
 
+  // create paths for different pages on website
+  // create paths that log in or register users to dashboard if login is true
   const router = createBrowserRouter([
-    { path: "/", element: login ? <Dashboard /> : <Navigate to="/login" /> },
+    {
+      path: "/",
+      element: currentUser ? <Dashboard /> : <Navigate to="/login" />,
+    },
     { path: "/addevent", element: <AddEvent /> },
     { path: "/help", element: <Help /> },
-    { path: "/register", element: login ? <Navigate to="/" /> : <Register /> },
+    {
+      path: "/register",
+      element: currentUser ? <Navigate to="/" /> : <Register />,
+    },
     {
       path: "/login",
-      element: login ? <Navigate to="/" /> : <Login />,
+      element: currentUser ? <Navigate to="/" /> : <Login />,
     },
     { path: "/updateevent/:id", element: <UpdateEvent /> },
   ]);

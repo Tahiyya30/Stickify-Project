@@ -7,13 +7,17 @@ import { GlobalContext } from "../context/createContext.jsx";
 import { Link } from "react-router-dom";
 import { useEffect } from "react";
 
+// function to register first time user
 export default function Register() {
-  const { login, setLogin } = useContext(GlobalContext);
+  // access shared state variables
+  const { currentUser, setCurrentUser } = useContext(GlobalContext);
 
+  // check if state has changed from true to false when login changes
   useEffect(() => {
-    console.log("login updated:", login);
-  }, [login]);
+    console.log("login updated:", currentUser);
+  }, [currentUser]);
 
+  // store initial values of register form
   const formik = useFormik({
     initialValues: {
       name: "",
@@ -25,25 +29,32 @@ export default function Register() {
 
     validationSchema: RegisterValidation,
 
+    // on submission of form run the below function
     onSubmit: (values) => {
+      // get users from local storage
       const users = JSON.parse(localStorage.getItem("users")) || [];
 
+      // check if user exists using email and username and save their user information if they do
       const existingUser = users.find(
         (user) =>
           user.email === values.email || user.username === values.username,
       );
 
+      // if user does exist, tell user to login instead of registering
       if (existingUser) {
         alert("Account already exists. Please login.");
         return;
       }
 
-      //take the values object that is returned and store it as a string object in local storage on submit
+      //take the values object and push it to the users array
       users.push(values);
 
+      // update local storage with new users array
       localStorage.setItem("users", JSON.stringify(users));
 
-      setLogin(true);
+      // set login to true so users can login to dashboard
+      setCurrentUser(values);
+      localStorage.setItem("currentUser", JSON.stringify(values));
 
       console.log(users);
     },

@@ -6,10 +6,14 @@ import { GlobalContext } from "../context/createContext";
 
 export default function NavBar() {
   const navigate = useNavigate();
-  const { login, setLogin } = useContext(GlobalContext);
+  const { currentUser, setCurrentUser } = useContext(GlobalContext);
 
+  // function to log out user
   function handleLogout() {
-    setLogin(false);
+    // when user clicks log out button, set login to false and navigate back to login screen
+
+    localStorage.removeItem("currentUser");
+    setCurrentUser(null);
     navigate("/login");
     return;
   }
